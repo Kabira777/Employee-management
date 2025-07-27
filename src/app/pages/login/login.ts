@@ -24,7 +24,7 @@ onLogin(){
      if(this.loginObj.username=="admin" && this.loginObj.password=="admin786"){
 
       this.router.navigate(['/dashboard']);
-      alert("Kabiraaaa")
+      alert("Login Successful")
       }
        else{
       alert("Wrong credentials");

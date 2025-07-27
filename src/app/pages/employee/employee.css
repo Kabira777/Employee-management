@@ -1,0 +1,85 @@
+/* FORM CONTAINER */
+#employees form {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+}
+
+/* LABELS */
+.form-label {
+  font-weight: 500;
+  color: #333;
+}
+
+/* INPUTS AND SELECTS */
+.form-control,
+.form-select {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 10px;
+  transition: all 0.3s ease;
+  background-color: #f9f9f9;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #555;
+  background-color: #fff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(85, 85, 85, 0.4);
+}
+
+/* BUTTON */
+/* form button {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+} */
+
+/* form button:hover {
+  background-color: #000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+} */
+
+/* TABLE */
+#employees table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#employees thead {
+  background-color: #333;
+  color: #fff;
+}
+
+#employees th,
+#employees td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+#employees tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* OPTIONAL: Action buttons in table */
+#employees tbody button {
+  padding: 5px 10px;
+  border: none;
+  background-color: #555;
+  color: white;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+#employees tbody button:hover {
+  background-color: #000;
+}

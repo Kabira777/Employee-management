@@ -1,1 +1,107 @@
-<p>employee works!</p>
+<div class="tab-pane fade show active" id="employees" role="tabpanel">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="m-0">Employee</h2>
+    <button class="btn btn-primary btn-add" (click)="showOrHide(true)">Add New</button>
+     </div>
+
+     @if(isFormVisible==true)
+     {
+            <form class="mb-4">
+       <div class="row">
+        <div class="col-md-6">
+            <label for="empName" class="form-label">Employee Name</label>
+            <input type="text" class="form-control" id="empName" placeholder="Enter employee name"> 
+        </div>
+        <div class="col-md-6">
+            <label for="contactNo" class="form-label">Contact No.</label>
+            <input type="text" class="form-control" id="contactNo" placeholder="Enter contact number">
+        </div>
+       </div>
+
+       <div class="row">
+        <div class="col-md-4">
+            <label for="emailId" class="form-label">Email</label>
+            <input type="email" class="form-control" id="emailID" placeholder="Enter email"> 
+        </div>
+        <div class="col-md-4">
+            <label for="parentdeptID" class="form-label">Parent Department</label>
+            <select id="parentdeptID" class="form-select">
+                <option selected>Select department</option>
+                @for(item of parentDeptList(); track $index){
+                   <option [value]="item.departmentId">{{item.departmentName}}</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label for="childdeptID" class="form-label">Child Department</label>
+            <select id="childdeptID" class="form-select">
+                <option selected>Select department</option>
+            </select>
+        </div>
+       </div>
+       
+
+       <div class="row">
+        <div class="col-md-6">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Enter password"> 
+        </div>
+        <div class="col-md-6">
+            <label for="role" class="form-label">Role</label>
+            <input type="text" class="form-control" id="role" placeholder="Enter role">
+        </div>
+       </div>
+
+
+       <div class="row">
+        <div class="col-md-6">
+            <label for="gender" class="form-label">Gender</label>
+            <select id="gender" class="form-select">
+                <option selected>Select gender</option>
+            </select> 
+        </div>
+        
+       </div>
+
+       <div class="row">
+        <div class="col-md-6">
+            <button type="button" class="btn btn-secondary mt-4 btn-submit">
+            Submit
+            </button>
+
+            <button class="btn btn-danger mx-2 mt-4 btn-closed" (click)="showOrHide(false)">
+                Close
+            </button>
+
+        </div>
+       </div>
+      
+    </form>
+     }
+   
+         <h3>Employee List</h3>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Employee ID</th>
+                <th>Name</th>
+                <th>Contact No</th>
+                <th>Email</th>
+                <th>Department</th>
+                <th>Role</th>
+                <th>Gender</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+
+    </table>
+   
+
+   
+
+
+</div>
+
