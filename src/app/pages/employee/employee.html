@@ -10,32 +10,36 @@
        <div class="row">
         <div class="col-md-6">
             <label for="empName" class="form-label">Employee Name</label>
-            <input type="text" class="form-control" id="empName" placeholder="Enter employee name"> 
+            <input type="text" class="form-control" name="empName" [(ngModel)]="employeeObj.employeeName" id="employeeName" placeholder="Enter employee name"> 
         </div>
         <div class="col-md-6">
             <label for="contactNo" class="form-label">Contact No.</label>
-            <input type="text" class="form-control" id="contactNo" placeholder="Enter contact number">
+            <input type="text" class="form-control" name="contactNo" [(ngModel)]="employeeObj.contactNo" id="contactNo" placeholder="Enter contact number">
         </div>
        </div>
 
        <div class="row">
         <div class="col-md-4">
             <label for="emailId" class="form-label">Email</label>
-            <input type="email" class="form-control" id="emailID" placeholder="Enter email"> 
+            <input type="email" class="form-control" name="emailId" [(ngModel)]="employeeObj.emailId" id="emailId" placeholder="Enter email"> 
         </div>
         <div class="col-md-4">
-            <label for="parentdeptID" class="form-label">Parent Department</label>
-            <select id="parentdeptID" class="form-select">
+            <label for="parentDeptId" class="form-label">Parent Department</label>
+            <select id="parentDeptId" class="form-select" [(ngModel)]="parentDeptId" (change)="onParentDeptChange();" name="parentDeptId">
+    <option [ngValue]="0" disabled selected>Select parent department</option> 
+    @for(item of parentDeptList(); track $index){
+       <option [ngValue]="item.departmentId">{{item.departmentName}}</option>
+    }
+</select>
+
+        </div>
+        <div class="col-md-4">
+            <label for="deptId" class="form-label">Child Department</label>
+            <select id="deptId" class="form-select" name="deptId" [(ngModel)]="employeeObj.deptId">
                 <option selected>Select department</option>
-                @for(item of parentDeptList(); track $index){
-                   <option [value]="item.departmentId">{{item.departmentName}}</option>
+                @for(item of childDeptList(); track $index){
+                    <option [ngValue]="item.childDeptId">{{item.departmentName}}</option>
                 }
-            </select>
-        </div>
-        <div class="col-md-4">
-            <label for="childdeptID" class="form-label">Child Department</label>
-            <select id="childdeptID" class="form-select">
-                <option selected>Select department</option>
             </select>
         </div>
        </div>
@@ -43,29 +47,35 @@
 
        <div class="row">
         <div class="col-md-6">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Enter password"> 
+            <label for="password" class="form-label"  >Password</label>
+            <input type="password" class="form-control" id="password" name="password" [(ngModel)]="employeeObj.password" placeholder="Enter password"> 
         </div>
         <div class="col-md-6">
-            <label for="role" class="form-label">Role</label>
-            <input type="text" class="form-control" id="role" placeholder="Enter role">
+            <label for="role" class="form-label" >Role</label>
+            <input type="text" class="form-control" id="role" [(ngModel)]="employeeObj.role" name="role" placeholder="Enter role">
         </div>
        </div>
 
 
        <div class="row">
         <div class="col-md-6">
-            <label for="gender" class="form-label">Gender</label>
-            <select id="gender" class="form-select">
+            <label for="gender" class="form-label"  >Gender</label>
+            <select id="gender" class="form-select" name="gender" [(ngModel)]="employeeObj.gender">
                 <option selected>Select gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
             </select> 
         </div>
-        
+         <div class="col-md-6">
+            <label for="createdDate" class="form-label" >Date</label>
+            <input type="date" class="form-control" id="createdDate" name="createdDate" [(ngModel)]="employeeObj.createdDate" placeholder="Enter Entry date">
+        </div>
+     
        </div>
 
        <div class="row">
         <div class="col-md-6">
-            <button type="button" class="btn btn-secondary mt-4 btn-submit">
+            <button type="button" (click)="onSave();" class="btn btn-secondary mt-4 btn-submit">
             Submit
             </button>
 
@@ -79,11 +89,11 @@
     </form>
      }
    
-         <h3>Employee List</h3>
-    <table class="table table-bordered">
+       
+    <table class="table table-bordered employee-table">
         <thead>
             <tr>
-                <th>Employee ID</th>
+                <th>Sr. No.</th>
                 <th>Name</th>
                 <th>Contact No</th>
                 <th>Email</th>
@@ -94,7 +104,20 @@
             </tr>
         </thead>
         <tbody>
+            @for(item of employeeList(); track $index){
+                <tr>
+                    <td>{{$index+1}}</td> 
+                    <td>{{item.employeeName}}</td>
+                    <td>{{item.contactNo}}</td>
+                    <td>{{item.emailId}}</td>
+                    <td>{{item.deptId}}</td>
+                    <td>{{item.role}}</td>
+                    <td>{{item.gender}}</td>
+                    <td></td>
+                    
 
+                </tr>
+            }
         </tbody>
 
     </table>

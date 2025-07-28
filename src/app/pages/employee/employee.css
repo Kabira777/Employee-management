@@ -1,4 +1,5 @@
 /* FORM CONTAINER */
+
 #employees form {
   background-color: #ffffff;
   padding: 30px;
@@ -31,55 +32,82 @@
   box-shadow: 0 0 5px rgba(85, 85, 85, 0.4);
 }
 
-/* BUTTON */
-/* form button {
-  background-color: #333;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-} */
-
-/* form button:hover {
-  background-color: #000;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-} */
-
 /* TABLE */
-#employees table {
+/* Light Mode: Employee Table Styling */
+.employee-table {
   width: 100%;
   border-collapse: collapse;
-  background-color: #fff;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-size: 15px;
 }
 
-#employees thead {
-  background-color: #333;
-  color: #fff;
+.employee-table thead {
+  background-color: #004080; /* Rich deep blue */
+  color: #ffffff;
+  font-weight: 600;
 }
 
-#employees th,
-#employees td {
-  padding: 12px;
+.employee-table th,
+.employee-table td {
+  padding: 12px 14px;
   text-align: center;
   border: 1px solid #ddd;
+  transition: background-color 0.3s ease;
 }
 
-#employees tbody tr:hover {
-  background-color: #f1f1f1;
+/* 🌟 Full row hover for header */
+.employee-table thead tr th {
+  background-color: #fff7cc; /* lighter soft yellow */
 }
 
-/* OPTIONAL: Action buttons in table */
-#employees tbody button {
-  padding: 5px 10px;
+/* 🌟 Full row hover for body */
+.employee-table tbody tr:hover td {
+  background-color: #fff9e6; /* Light pastel yellow */
+}
+
+/* Button styles */
+.employee-table tbody button {
+  padding: 6px 12px;
   border: none;
-  background-color: #555;
-  color: white;
+  background-color: #444;
+  color: #fff;
   border-radius: 4px;
   transition: background-color 0.3s ease;
 }
 
-#employees tbody button:hover {
+.employee-table tbody button:hover {
   background-color: #000;
+}
+
+:host-context(body.dark-mode) .employee-table {
+  background-color: #1a1a1a;
+  color: #e0f7ff;
+  border-color: #444;
+}
+
+:host-context(body.dark-mode) .employee-table thead {
+  background-color: #03e9f4;
+  color: #ffffff;
+}
+
+:host-context(body.dark-mode) .employee-table thead tr th {
+  background-color: #03e9f4; /* neon turquoise tint */
+}
+
+:host-context(body.dark-mode) .employee-table tbody td {
+  background-color: #121212;
+  color: #e0f7ff;
+  border-color: #444;
+}
+
+:host-context(body.dark-mode) .employee-table tbody tr:hover td {
+  background-color: #1e2f40;
+}
+
+:host-context(body.dark-mode) .employee-table thead tr th {
+  background-color:  #03e9f4; /* neon turquoise tint */
+  border: 1px solid #000000; /* black borders */
 }
