@@ -111,3 +111,18 @@
   background-color:  #03e9f4; /* neon turquoise tint */
   border: 1px solid #000000; /* black borders */
 }
+
+/* ✅ Dark Mode Autofill Fix */
+body.dark-mode input:-webkit-autofill,
+body.dark-mode input:-webkit-autofill:focus,
+body.dark-mode input:-webkit-autofill:hover,
+body.dark-mode input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px #1e1e1e inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+  caret-color: #ffffff !important;
+  transition: background-color 9999s ease-in-out 0s !important;
+}
+
+.btn-update{
+  color:white;
+}

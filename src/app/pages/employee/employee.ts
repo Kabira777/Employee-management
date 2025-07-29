@@ -47,27 +47,21 @@ onParentDeptChange() {
 
 }
 
-// onSave(){
-//   debugger;
-//   this.masterSrv.saveEmp(this.employeeObj).subscribe((res:IApiResponse)=>{
-//     debugger;
-//    alert("Employee created");
-//   },error=>{
-
-//   })
-// }
-
 
 onSave() {
-  debugger;
+  
   this.masterSrv.saveEmp(this.employeeObj).subscribe({
     next: (res: IApiResponse) => {
-      debugger;
+      
       if (res.result) {
         alert("Employee created");
+        this.getEmployees();
+        this.employeeObj=new EmployeeMaster();
       } else {
         // alert("Creation failed: " + res.message);
          alert("Employee created");
+         this.getEmployees();
+         this.employeeObj=new EmployeeMaster();
       }
     },
     error: (err) => {
@@ -75,6 +69,61 @@ onSave() {
       alert("Server error occurred while saving employee.");
     }
   });
+}
+
+
+onEdit(data:EmployeeMaster){
+  this.employeeObj=data;
+  this.isFormVisible=true;
+}
+
+// onUpdate(){
+// this.masterSrv.updateEmp(this.employeeObj).subscribe((res:IApiResponse)=>{
+// debugger;
+// alert("Employee updated");
+// },error=>{
+
+// })
+// }
+
+onUpdate() {
+  this.masterSrv.updateEmp(this.employeeObj).subscribe({
+    next: (res: IApiResponse) => {
+      if (res.result) {
+        alert("Employee updated");
+      } else {
+        alert("Update failed: " + res.message);
+      }
+      
+      this.getEmployees();
+      this.employeeObj = new EmployeeMaster();
+    },
+    error: (err) => {
+      console.error("API Error:", err);
+      alert("Server error occurred while saving employee.");
+    }
+  });
+}
+
+
+onDelete(id: number) {
+  const isDelete = confirm("Are you sure want to Delete?");
+  if (isDelete) {
+    this.masterSrv.deleteEmp(id).subscribe({
+      next: (res: IApiResponse) => {
+        if (res.result) {
+          alert("Employee deleted");
+        } else {
+          alert("Deletion failed: " + res.message);
+        }
+        this.getEmployees(); 
+      },
+      error: (err) => {
+        console.error("API Error:", err);
+        alert("Server error occurred while deleting employee.");
+      }
+    });
+  }
 }
 
 

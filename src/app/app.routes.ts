@@ -5,6 +5,7 @@ import { Dashboard } from './pages/dashboard/dashboard';
 import { Employee } from './pages/employee/employee';
 import { Project } from './pages/project/project';
 import { ProjectEmployee } from './pages/project-employee/project-employee';
+import { ProjectForm } from './pages/project-form/project-form';
 
 export const routes: Routes = [
 
@@ -29,6 +30,10 @@ export const routes: Routes = [
         {
             path:'employee',
             component:Employee
+        },
+         {
+            path:'new-project/:id',
+            component:ProjectForm
         },
         
         {

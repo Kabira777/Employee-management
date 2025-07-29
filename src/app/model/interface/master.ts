@@ -16,6 +16,17 @@ export interface IChildDept {
     departmentName:string;
 }
 
+export interface IProject {
+    projectId:number;
+    projectName:number;
+    clientName:string;
+    startDate:number;
+    leadByEmpId:number;
+    contactPerson:string;
+    contactNo:number;
+    emailId:number;
+}
+
 
 
 
