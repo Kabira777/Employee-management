@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IApiResponse, IProject } from '../model/interface/master';
+import { IApiResponse, IProject,IProjectEmployee} from '../model/interface/master';
 import {EmployeeMaster} from '../model/class/EmployeeMaster';
 
 @Injectable({
@@ -62,4 +62,25 @@ export class Master {
    debugger;
      return this.http.put<IProject>(`${this.apiUrl}UpdateProject/${obj.projectId}`,obj);
   }
+
+  deleteProject(id:number):Observable<IProject>{
+   debugger;
+     return this.http.delete<IProject>(`${this.apiUrl}DeleteProject/${id}`);
+  }
+
+   getProjectEmp():Observable<IProjectEmployee[]>{
+  
+     return this.http.get<IProjectEmployee[]>(`${this.apiUrl}GetAllProjectEmployees`);
+  }
+  
+  saveProjectEmp(obj:IProjectEmployee):Observable<IProject>{
+   debugger;
+     return this.http.post<IProject>(`${this.apiUrl}CreateProjectEmployee`,obj);
+  }
+
+   updateProjectEmp(obj:IProjectEmployee):Observable<IProjectEmployee>{
+   debugger;
+     return this.http.put<IProjectEmployee>(`${this.apiUrl}UpdateProjectEmployee/${obj.projectId}`,obj);
+  }
+
 }

@@ -77,53 +77,54 @@ onEdit(data:EmployeeMaster){
   this.isFormVisible=true;
 }
 
-// onUpdate(){
-// this.masterSrv.updateEmp(this.employeeObj).subscribe((res:IApiResponse)=>{
-// debugger;
-// alert("Employee updated");
-// },error=>{
-
-// })
-// }
-
-onUpdate() {
-  this.masterSrv.updateEmp(this.employeeObj).subscribe({
-    next: (res: IApiResponse) => {
-      if (res.result) {
-        alert("Employee updated");
-      } else {
-        alert("Update failed: " + res.message);
-      }
-      
-      this.getEmployees();
-      this.employeeObj = new EmployeeMaster();
-    },
-    error: (err) => {
-      console.error("API Error:", err);
-      alert("Server error occurred while saving employee.");
-    }
-  });
+onUpdate(){
+this.masterSrv.updateEmp(this.employeeObj).subscribe((res:IApiResponse)=>{
+debugger;
+alert("Employee updated");
+},error=>{
+alert("API error");
+})
 }
 
+// onUpdate() {
+//   this.masterSrv.updateEmp(this.employeeObj).subscribe({
+//     next: (res: IApiResponse) => {
+//       if (res.result) {
+//         alert("Employee updated");
+//       } else {
+//         alert("Update failed: " + res.message);
+//       }
+      
+//       this.getEmployees();
+//       this.employeeObj = new EmployeeMaster();
+//     },
+//     error: (err) => {
+//       console.error("API Error:", err);
+//       alert("Server error occurred while saving employee.");
+//     }
+//   });
+// }
 
-onDelete(id: number) {
-  const isDelete = confirm("Are you sure want to Delete?");
+
+
+onDelete(id: number): void {
+  debugger;
+  const isDelete = confirm("Are you sure want to delete?");
   if (isDelete) {
-    this.masterSrv.deleteEmp(id).subscribe({
-      next: (res: IApiResponse) => {
-        if (res.result) {
-          alert("Employee deleted");
-        } else {
-          alert("Deletion failed: " + res.message);
-        }
-        this.getEmployees(); 
+    this.masterSrv.deleteEmp(id).subscribe(
+      (res: IApiResponse) => {
+        debugger;
+        alert("Employee Deleted");
+        this.getEmployees();
       },
-      error: (err) => {
-        console.error("API Error:", err);
-        alert("Server error occurred while deleting employee.");
+      error => {
+        alert("API error");
       }
-    });
-  }
+    );
+  } else {
+    return; 
+}
+
 }
 
 

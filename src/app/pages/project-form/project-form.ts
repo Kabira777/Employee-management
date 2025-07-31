@@ -45,8 +45,7 @@ export class ProjectForm {
   getProject(id:number) { 
    this.masterSrv.getProjectById(id).subscribe((res:IProject)=>{
   debugger;
-  this.initializeForm();
-  this.projectForm.reset();
+ this.initializeForm(res); // Use API response to populate form
    },
    error=>{
     alert('API error');

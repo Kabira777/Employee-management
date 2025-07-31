@@ -27,6 +27,14 @@ export interface IProject {
     emailId:number;
 }
 
+export interface IProjectEmployee {
+    empProjectId:number;
+    projectId:number;
+    empId:string;
+    assignedDate:number;
+    role:string;
+    isActive:string;
+}
 
 
 
