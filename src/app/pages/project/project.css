@@ -83,7 +83,6 @@
 }
 
 
-
 :host-context(body.dark-mode) .project-table {
   background-color: #1a1a1a;
   color: #e0f7ff;
@@ -91,13 +90,15 @@
 }
 
 :host-context(body.dark-mode) .project-table thead {
-  background-color: #03e9f4;
+  background-color: #a020f0;  /* purplish shade */
   color: #ffffff;
 }
 
 :host-context(body.dark-mode) .project-table thead tr th {
-  background-color: #03e9f4; /* neon turquoise tint */
+  background-color: #a020f0;  /* purplish shade */
+  border: 1px solid #000;    /* optional: dark border */
 }
+
 
 :host-context(body.dark-mode) .project-table tbody td {
   background-color: #121212;
@@ -110,7 +111,7 @@
 }
 
 :host-context(body.dark-mode) .project-table thead tr th {
-  background-color:  #03e9f4; /* neon turquoise tint */
+  background-color:  #a020f0; /* neon turquoise tint */
   border: 1px solid #000000; /* black borders */
 }
 
