@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IApiResponse, IProject,IProjectEmployee} from '../model/interface/master';
+import { IApiResponse, IProject,IProjectEmployee,IDashboardResponse} from '../model/interface/master';
 import {EmployeeMaster} from '../model/class/EmployeeMaster';
 
 @Injectable({
@@ -83,4 +83,7 @@ export class Master {
      return this.http.put<IProjectEmployee>(`${this.apiUrl}UpdateProjectEmployee/${obj.projectId}`,obj);
   }
 
+  getDashboardData():Observable<any>{
+   return this.http.get<any>(this.apiUrl+"GetDashboard");
+  }
 }

@@ -1,41 +1,44 @@
 export interface IApiResponse {
-    message:string;
-    result:boolean;
-    data:any;
+  message: string;
+  result: boolean;
+  data: any;
 }
 
 export interface IParentDept {
-    departmentId:number;
-    departmentName:string;
-    departmentLogo:string;
+  departmentId: number;
+  departmentName: string;
+  departmentLogo: string;
 }
 
 export interface IChildDept {
-    childDeptId:number;
-    parentDeptId:number;
-    departmentName:string;
+  childDeptId: number;
+  parentDeptId: number;
+  departmentName: string;
 }
 
 export interface IProject {
-    projectId:number;
-    projectName:number;
-    clientName:string;
-    startDate:number;
-    leadByEmpId:number;
-    contactPerson:string;
-    contactNo:number;
-    emailId:number;
+  projectId: number;
+  projectName: string;
+  clientName: string;
+  startDate: string;
+  leadByEmpId: number;
+  contactPerson: string;
+  contactNo: string;
+  emailId: string;
 }
 
 export interface IProjectEmployee {
-    empProjectId:number;
-    projectId:number;
-    empId:string;
-    assignedDate:number;
-    role:string;
-    isActive:string;
+  empProjectId: number;
+  projectId: number;
+  empId: number;
+  assignedDate: string;
+  role: string;
+  isActive: boolean;
 }
 
-
-
- 
+export interface IDashboardResponse {
+  totalEmployee: number;
+  totalProject: number;
+  recentEmployee: any[];
+  recentProjects: IProject[];
+}

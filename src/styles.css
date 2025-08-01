@@ -194,4 +194,77 @@ body.dark-mode .btn-add-project:focus {
 
 
 
-/* table */
+/* ===== DARK MODE DASHBOARD CARD PULSE GLOWS ===== */
+
+/* Optional: more subtle pulsing */
+@keyframes bluePulse {
+  0%, 100% {
+    box-shadow: 0 0 6px rgba(78, 115, 223, 0.25), 0 0 12px rgba(46, 89, 217, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 12px rgba(115, 162, 255, 0.4), 0 0 20px rgba(78, 115, 223, 0.3);
+  }
+}
+
+
+@keyframes greenPulse {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(28, 200, 138, 0.3), 0 0 20px rgba(23, 166, 115, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(102, 255, 195, 0.6), 0 0 30px rgba(28, 200, 138, 0.4);
+  }
+}
+
+@keyframes redPulse {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(231, 74, 59, 0.3), 0 0 20px rgba(192, 57, 43, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(255, 130, 115, 0.6), 0 0 30px rgba(231, 74, 59, 0.4);
+  }
+}
+
+body.dark-mode .dashboard-card {
+  color: #fff;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+body.dark-mode .dashboard-card:hover {
+  transform: scale(1.02);
+}
+
+/* Pulsing Effects */
+body.dark-mode .blue-card:hover {
+  animation: bluePulse 1.6s infinite;
+  border: 1px solid rgba(115, 162, 255, 0.5);
+}
+
+body.dark-mode .green-card:hover {
+  animation: greenPulse 1.6s infinite;
+  border: 1px solid rgba(102, 255, 195, 0.5);
+}
+
+body.dark-mode .red-card:hover {
+  animation: redPulse 1.6s infinite;
+  border: 1px solid rgba(255, 130, 115, 0.5);
+}
+
+/* Dark Gradients for Cards */
+body.dark-mode .blue-card {
+  background: linear-gradient(135deg, #3b4cca, #2a3ba0);
+}
+
+body.dark-mode .green-card {
+  background: linear-gradient(135deg, #148f77, #117a65);
+}
+
+body.dark-mode .red-card {
+  background: linear-gradient(135deg, #c0392b, #96281b);
+}
+
+body.dark-mode .card-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+
