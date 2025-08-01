@@ -1,0 +1,130 @@
+/* FORM CONTAINER */
+
+#projects form {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+}
+
+/* LABELS */
+.form-label {
+  font-weight: 500;
+  color: #333;
+}
+
+/* INPUTS AND SELECTS */
+.form-control,
+.form-select {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 10px;
+  transition: all 0.3s ease;
+  background-color: #f9f9f9;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #555;
+  background-color: #fff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(85, 85, 85, 0.4);
+}
+
+/* TABLE */
+/* Light Mode: Employee Table Styling */
+.project-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-size: 15px;
+}
+
+.project-table thead {
+  background-color: #004080; /* Rich deep blue */
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.project-table th,
+.project-table td {
+  padding: 12px 14px;
+  text-align: center;
+  border: 1px solid #ddd;
+  transition: background-color 0.3s ease;
+}
+
+/* 🌟 Full row hover for header */
+.project-table thead tr th {
+  background-color: #fff7cc; /* lighter soft yellow */
+}
+
+/* 🌟 Full row hover for body */
+.project-table tbody tr:hover td {
+  background-color: #fff9e6; /* Light pastel yellow */
+}
+
+/* Button styles */
+.project-table tbody button {
+  padding: 6px 12px;
+  border: none;
+  background-color: #444;
+  color: #fff;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.project-table tbody button:hover {
+  background-color: #000;
+}
+
+
+
+:host-context(body.dark-mode) .project-table {
+  background-color: #1a1a1a;
+  color: #e0f7ff;
+  border-color: #444;
+}
+
+:host-context(body.dark-mode) .project-table thead {
+  background-color: #03e9f4;
+  color: #ffffff;
+}
+
+:host-context(body.dark-mode) .project-table thead tr th {
+  background-color: #03e9f4; /* neon turquoise tint */
+}
+
+:host-context(body.dark-mode) .project-table tbody td {
+  background-color: #121212;
+  color: #e0f7ff;
+  border-color: #444;
+}
+
+:host-context(body.dark-mode) .project-table tbody tr:hover td {
+  background-color: #1e2f40;
+}
+
+:host-context(body.dark-mode) .project-table thead tr th {
+  background-color:  #03e9f4; /* neon turquoise tint */
+  border: 1px solid #000000; /* black borders */
+}
+
+/* ✅ Dark Mode Autofill Fix */
+body.dark-mode input:-webkit-autofill,
+body.dark-mode input:-webkit-autofill:focus,
+body.dark-mode input:-webkit-autofill:hover,
+body.dark-mode input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px #1e1e1e inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+  caret-color: #ffffff !important;
+  transition: background-color 9999s ease-in-out 0s !important;
+}
+
+.btn-update{
+  color:white;
+}
