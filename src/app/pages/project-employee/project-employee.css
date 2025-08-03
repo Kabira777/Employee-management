@@ -1,76 +1,117 @@
-/* General card styling */
+/* Card Base */
 .card {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   border: none;
   border-radius: 8px;
   margin-bottom: 20px;
+  background-color: #fff;
 }
 
-/* Orange header */
 .card-header {
-  background-color: #ff8c00; /* Deep orange */
-  color: white;
   padding: 12px 16px;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-}
-
-/* Adjust spacing and font */
-.card-body {
-  padding: 20px;
-}
-
-.card-header h5 {
-  margin: 0;
+  border-radius: 8px 8px 0 0;
   font-size: 1.1rem;
   font-weight: 600;
+  background-color: #ff8c00;
+  color: #fff;
 }
 
-/* Table styling */
+.card-body {
+  padding: 1rem 1.2rem;
+}
+
+/* Table */
 .employee-table th,
 .employee-table td {
-  vertical-align: middle;
   text-align: center;
+  vertical-align: middle;
   font-size: 0.95rem;
 }
 
-.employee-table th {
+.employee-table thead th {
   background-color: #f2f2f2;
 }
 
-/* Form inputs */
-form .form-label {
+/* Form Elements */
+form .form-label,
+form .form-control,
+form .form-select {
   font-size: 0.9rem;
-  font-weight: 500;
 }
 
-form .form-control {
-  font-size: 0.9rem;
+form .form-control,
+form .form-select {
   padding: 6px 10px;
 }
 
-/* Button styling */
-.btn-sub {
+.compact-form .form-control,
+.compact-form .form-select {
+  padding: 0.375rem 0.5rem;
+  font-size: 0.875rem;
+}
+
+.compact-form .form-label {
+  font-size: 0.875rem;
+  margin-bottom: 0.2rem;
+}
+
+/* Buttons */
+/* Common styles for all modes */
+.btn-sub,
+.btn-submit,
+.btn-update {
   width: 100%;
   padding: 10px;
   font-size: 0.95rem;
   font-weight: 600;
-  background-color: #007bff;
   border: none;
   border-radius: 5px;
-  transition: all 0.3s ease;
+  transition: 0.3s ease;
+}
+
+/* LIGHT MODE styles */
+body:not(.dark-mode) .btn-submit {
+  background-color: #28a745 !important; /* Bootstrap success */
+  color: white !important;
+}
+
+body:not(.dark-mode) .btn-submit:hover {
+  background-color: #218838 !important;
+}
+
+body:not(.dark-mode) .btn-update {
+  background-color: #ffc107 !important; /* Bootstrap warning */
+  color: black !important;
+}
+
+body:not(.dark-mode) .btn-update:hover {
+  background-color: #e0a800 !important;
+}
+
+
+
+
+/* Responsive */
+@media (max-width: 768px) {
+.btn-sub,
+.btn-submit,.btn-update {
+  width: 100%;
+  padding: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+
+.btn-sub {
+  background-color: #007bff;
 }
 
 .btn-sub:hover {
   background-color: #0056b3;
 }
 
-/* Responsive and spacing */
-.row > .col-md-6 {
-  margin-bottom: 15px;
-}
-
-@media (max-width: 768px) {
   .card-header h5 {
     font-size: 1rem;
   }
@@ -83,3 +124,58 @@ form .form-control {
     font-size: 0.9rem;
   }
 }
+
+/* -------------------------------------- */
+/* DARK MODE OVERRIDES */
+/* -------------------------------------- */
+:host-context(body.dark-mode) {
+
+
+  .card {
+    background-color: #111;
+    border-color: #333;
+    color: #fff;
+  }
+
+  .card-header {
+    background-color: #a020f0;
+    border-bottom: 1px solid #222;
+  }
+
+  .employee-table {
+    background-color: #1a1a1a;
+    color: #e0f7ff;
+    border-color: #444;
+  }
+
+  .employee-table thead th {
+    background-color: #a020f0;
+    color: #fff;
+  }
+
+  .form-label,
+  label,
+  .form-check-label {
+    color: #fff !important;
+  }
+
+  input:-webkit-autofill {
+    box-shadow: 0 0 0 1000px #000 inset !important;
+    -webkit-text-fill-color: #fff !important;
+  }
+
+  .btn-primary {
+    background-color: #03e9f4;
+    color: #000;
+    box-shadow: 0 0 10px #03e9f4, 0 0 20px #03e9f4;
+  }
+
+  .btn-primary:hover {
+    background-color: #00cfe8;
+    box-shadow: 0 0 15px #00cfe8, 0 0 30px #00cfe8;
+    transform: scale(1.03);
+  }
+}
+
+
+

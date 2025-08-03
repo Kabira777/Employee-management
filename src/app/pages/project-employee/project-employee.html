@@ -1,113 +1,147 @@
 <div class="row">
-    <div class="col-8">
-        <div class="card">
-            <div class="card-header">
-               <h5 class="text-nowrap">Project Employee</h5>
-            </div>
-            <div class="card-body">
-               <table class="table table-bordered employee-table">
-        <thead>
+  <div class="col-8">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="text-nowrap">Project Employee</h5>
+      </div>
+      <div class="card-body">
+        <table class="table table-bordered employee-table">
+          <thead>
             <tr>
-                <th>S.No.</th>
-                <th>Proj.ID</th>
-                <th>Emp.ID</th>
-                <th>Assigned Date</th>
-                <th>Role</th>
-                <th>Is Active</th>
-                <th>Actions</th>
+              <th>S.No.</th>
+              <th>Proj.ID</th>
+              <th>Emp.ID</th>
+              <th>Assigned Date</th>
+              <th>Role</th>
+              <th>Is Active</th>
+              <th>Actions</th>
             </tr>
-        </thead>
-        <tbody>
-           @for(item of projectEmployeeList();track $index){
+          </thead>
+          <tbody>
+            @for(item of projectEmployeeList(); track $index) {
             <tr>
-                <td>{{$index+1}}</td>
-                <td>{{item.projectId}}</td>
-                <td>{{item.empId}}</td>
-                <td>{{ item.assignedDate | date: 'dd-MM-yyyy' }}</td>
-
-                <td>{{item.role}}</td>
-                <td>{{item.isActive}}</td>
-                <td>
-                        <button type="button" class="btn btn-sm btn-info me-1" >
-                            <i class="fa fa-pencil"></i>
-                        </button>
-                        <button type="button" class="btn btn-sm btn-danger mt-2">
-                            <i class="fa fa-trash"></i>
-                         </button>
-                    </td>
+              <td>{{$index + 1}}</td>
+              <td>{{item.projectId}}</td>
+              <td>{{item.empId}}</td>
+              <td>{{ item.assignedDate | date: 'dd-MM-yyyy' }}</td>
+              <td>{{item.role}}</td>
+              <td>
+                <span
+                  class="badge"
+                  [ngClass]="item.isActive ? 'bg-success' : 'bg-secondary'"
+                >
+                  <i
+                    class="fa"
+                    [ngClass]="item.isActive ? 'fa-check-circle' : 'fa-times-circle'"
+                  ></i>
+                  {{ item.isActive ? 'Active' : 'Inactive' }}
+                </span>
+              </td>
+              <td>
+                <button
+                  type="button"
+                  class="btn btn-sm btn-info me-1 button-edit"
+                  (click)="onEdit(item)"
+                >
+                  <i class="fa fa-pencil"></i>
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-sm btn-danger mt-2 button-delete"
+                  (click)="onDelete(item.empProjectId)"
+                >
+                  <i class="fa fa-trash"></i>
+                </button>
+              </td>
             </tr>
-           }
-        </tbody>
-
-    </table>
-            </div>
-        </div>
-        
-   
-    </div>
-
-      <div class="col-4">
-        <div class="card">
-            <div class="card-header">
-                <h5 class="text-nowrap">Add New Project Employee</h5>
-            </div>
-            <div class="card-body">
-   <form [formGroup]="form" class="mb-4">
-  <div class="row">
-    <div class="col-md-6">
-      <label for="projectId" class="form-label">Project ID</label>
-      <select class="form-select" formControlName="projectId">
-        <option value="">Select Project</option>
-        @for (item of projectList$ | async; track $index) {
-            <option [value]="item.projectId">{{item.projectName}}</option>
-        }
-      </select>
-    </div>
-    <div class="col-md-6">
-      <label for="empId" class="form-label">Employee ID</label>
-      <select class="form-select" formControlName="empId">
-            <option value="">Select Employee</option>
-            @for(item of EmpList$ | async; track $index;){
-             <option [value]="item.employeeId">{{item.employeeName}}</option>
             }
-      </select>
-     
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-6">
-      <label for="assignedDate" class="form-label">Assigned Date</label>
-      <input type="date" class="form-control" formControlName="assignedDate">
-    </div>
-    <div class="col-md-6">
-      <label for="role" class="form-label">Role</label>
-      <input type="text" class="form-control" formControlName="role">
-    </div>
-  </div>
-
-  <div class="row mt-2">
-    <div class="col-md-6">
-      <label>
-        <input type="checkbox" formControlName="isActive"> Is Active
-      </label>
-    </div>
-    <div class="col-md-6">
-      <button type="button" (click)="onSave();" class="btn btn-primary">Submit</button>
-    </div>
-  </div>
-</form>
-
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header bg-purple text-white">
+        <h5 class="text-nowrap mb-0">Add New Project Employee</h5>
+      </div>
+      <div class="card-body compact-form">
+        <form [formGroup]="form">
+          <div class="row g-2">
+            <div class="col-6">
+              <label for="projectId" class="form-label">Project ID</label>
+              <select class="form-select" formControlName="projectId">
+                <option value="">Select Project</option>
+                @for (item of projectList$ | async; track $index) {
+                <option [value]="item.projectId">{{ item.projectName }}</option>
+                }
+              </select>
             </div>
-        </div>
-        
-   
+
+            <div class="col-6">
+              <label for="empId" class="form-label">Employee ID</label>
+              <select class="form-select" formControlName="empId">
+                <option value="">Select Employee</option>
+                @for (item of EmpList$ | async; track $index) {
+                <option [value]="item.employeeId">{{ item.employeeName }}</option>
+                }
+              </select>
+            </div>
+
+            <div class="col-6">
+              <label for="assignedDate" class="form-label">Assigned Date</label>
+              <input
+                type="date"
+                class="form-control"
+                formControlName="assignedDate"
+              />
+            </div>
+
+            <div class="col-6">
+              <label for="role" class="form-label">Role</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="role"
+              />
+            </div>
+
+            <div class="col-12 d-flex align-items-center">
+              <input
+                type="checkbox"
+                formControlName="isActive"
+                class="form-check-input me-2"
+                id="isActiveCheck"
+              />
+              <label for="isActiveCheck" class="form-check-label mb-0 text-white">
+                <i class="fa fa-bolt me-1 text-info"></i> Is Active
+              </label>
+            </div>
+
+            <div class="col-12 text-end">
+              @if (form.controls['empProjectId'].value == 0) {
+              <button
+                type="button"
+                (click)="onSave();"
+                class="btn btn-submit btn-success text-white"
+              >
+                Submit
+              </button>
+              }
+              @else {
+              <button
+                type="button"
+                (click)="onUpdateProjectEmployee();"
+                class="btn btn-update btn-warning text-white"
+              >
+                Update
+              </button>
+              }
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
-
-
-
-
-    
+  </div>
 </div>
-
-

@@ -5,11 +5,11 @@ import { FormGroup,FormControl,ReactiveFormsModule, FormsModule } from '@angular
 import {RouterLink} from '@angular/router';
 import { Observable } from 'rxjs';
 import { EmployeeMaster } from '../../model/class/EmployeeMaster';
-import { AsyncPipe, DatePipe } from '@angular/common';
+import { AsyncPipe, DatePipe,CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-project-employee',
-  imports: [ReactiveFormsModule,AsyncPipe,DatePipe],
+  imports: [ReactiveFormsModule,AsyncPipe,DatePipe,CommonModule],
   templateUrl: './project-employee.html',
   styleUrl: './project-employee.css'
 })
@@ -59,6 +59,54 @@ this.masterSrv.getProjectEmp().subscribe((res:IProjectEmployee[])=>{
     alert('API error');
    })
  }
+
+onUpdateProjectEmployee(): void {
+  debugger;
+  const formValue = this.form.value;
+
+  this.masterSrv.updateProjectEmp(formValue).subscribe((res: IProjectEmployee) => {
+    alert("Project Employee Updated");
+    this.getAllData();
+    this.form.reset();
+    this.form.patchValue({ empProjectId: 0 }); 
+  }, error => {
+    alert('API error');
+  });
+}
+
+
+onDelete(id: number): void {
+  debugger;
+  const isDelete = confirm("Are you sure want to delete?");
+  if (isDelete) {
+    this.masterSrv.deleteProjectEmp(id).subscribe(
+      (res: IProjectEmployee) => {
+        debugger;
+        alert("Project-Employee Deleted");
+        this.getAllData();
+      },
+      error => {
+        alert("API error");
+      }
+    );
+  } else {
+    return; 
+}
+
+}
+
+
+
+onEdit(data: IProjectEmployee): void {
+  this.form.patchValue({
+    empProjectId: data.empProjectId,
+    projectId: data.projectId,
+    empId: data.empId,
+    assignedDate: data.assignedDate,
+    role: data.role,
+    isActive: data.isActive
+  });
+}
 
  
 }

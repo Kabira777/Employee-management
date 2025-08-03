@@ -80,7 +80,12 @@ export class Master {
 
    updateProjectEmp(obj:IProjectEmployee):Observable<IProjectEmployee>{
    debugger;
-     return this.http.put<IProjectEmployee>(`${this.apiUrl}UpdateProjectEmployee/${obj.projectId}`,obj);
+     return this.http.put<IProjectEmployee>(`${this.apiUrl}UpdateProjectEmployee/${obj.empProjectId}`,obj);
+  }
+
+  deleteProjectEmp(id:number):Observable<IProjectEmployee>{
+   debugger;
+     return this.http.delete<IProjectEmployee>(`${this.apiUrl}DeleteProjectEmployee/${id}`);
   }
 
   getDashboardData():Observable<any>{

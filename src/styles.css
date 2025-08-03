@@ -321,3 +321,41 @@ body.dark-mode table tbody button {
 body.dark-mode table tbody button:hover {
   background-color: #000;
 }
+
+
+/* Dark mode global input styles */
+body.dark-mode .form-control,
+body.dark-mode .form-select {
+  background-color: #121212 !important;
+  color: #e0f7ff !important;
+  border: 1px solid #333 !important;
+  caret-color: #00ffe7;
+}
+
+/* Autofill fix for Chrome */
+body.dark-mode input.form-control:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #121212 inset !important;
+  -webkit-text-fill-color: #e0f7ff !important;
+  caret-color: #00ffe7;
+}
+
+/* Optional focus glow */
+body.dark-mode .form-control:focus {
+  background-color: #1a1a1a !important;
+  border-color: #00ffe7 !important;
+  box-shadow: 0 0 6px #00ffe7 !important;
+}
+
+/* 
+ edit  and delete  button */
+
+body.dark-mode .button-edit:hover {
+  background-color:pink !important;
+}
+
+
+body.dark-mode .button-delete:hover {
+   background-color: red !important;
+}
+
+
