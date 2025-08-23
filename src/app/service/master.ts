@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IApiResponse, IProject,IProjectEmployee,IDashboardResponse} from '../model/interface/master';
 import {EmployeeMaster} from '../model/class/EmployeeMaster';
+import { PayrollEmployeeList } from '../model/class/PayrollEmployeeList';
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,7 @@ export class Master {
     constructor(private http:HttpClient){}
 
   apiUrl: string = "/api/EmployeeManagement/";
-
+ apiUrlPayroll:string="https://payroll.influxinfotech.in.net/SSAPI/";
 
   getAllDept():Observable<IApiResponse>{
    
@@ -91,4 +93,23 @@ export class Master {
   getDashboardData():Observable<any>{
    return this.http.get<any>(this.apiUrl+"GetDashboard");
   }
+
+   //Payroll APIs
+  login(loginId: string, password: string): Observable<any> {
+  const url = this.apiUrlPayroll+"GetUserDate";
+  const params = {
+    AccessCode: 'S82D9E4B9G2SD68SDF',  
+    LoginID: loginId,
+    uPass: password
+  };
+
+  return this.http.get<any>(url, { params });
+}
+
+
+getPayrollEmployeeList(accessCode: string, loginId: string): Observable<{ StatusCode: number, Message: string, Data: PayrollEmployeeList[] }> {
+  const url = `${this.apiUrlPayroll}/GetEmployeeList?AccessCode=${accessCode}&LoginID=${loginId}`;
+  return this.http.get<{ StatusCode: number, Message: string, Data: PayrollEmployeeList[] }>(url);
+}
+
 }

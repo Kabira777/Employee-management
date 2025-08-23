@@ -6,6 +6,7 @@ import { Employee } from './pages/employee/employee';
 import { Project } from './pages/project/project';
 import { ProjectEmployee } from './pages/project-employee/project-employee';
 import { ProjectForm } from './pages/project-form/project-form';
+import { PayrollEmployee } from './pages/payroll-employee/payroll-employee';
 
 export const routes: Routes = [
 
@@ -30,6 +31,10 @@ export const routes: Routes = [
         {
             path:'employee',
             component:Employee
+        },
+        {
+            path:'payroll-employee',
+            component:PayrollEmployee
         },
          {
             path:'new-project/:id',

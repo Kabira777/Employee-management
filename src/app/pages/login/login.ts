@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Router} from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { Master } from '../../service/master';
 
 @Component({
   selector: 'app-login',
@@ -14,23 +15,32 @@ loginObj:any={
    password:'',
 }
 
-constructor(private router:Router){}
+constructor(private router:Router, private master:Master){}
 
-onLogin(){
-  if(this.loginObj.username.trim()==''|| this.loginObj.password.trim()==''){
-    alert('Please enter your credentials')
+
+  onLogin() {
+    debugger;
+    if (this.loginObj.username.trim() === '' || this.loginObj.password.trim() === '') {
+      alert('Please enter your credentials');
+      return;
+    } else {
+      this.master.login(this.loginObj.username, this.loginObj.password)
+        .subscribe({
+          next: (res) => {
+            if (res && res.StatusCode === 200 && res.Data) {
+              alert('Login Successful');
+              // optionally store user info in localStorage
+              localStorage.setItem('user', JSON.stringify(res.Data));
+              this.router.navigate(['/dashboard']);
+            } else {
+              alert(res?.Message || 'Invalid login credentials');
+            }
+          },
+          error: (err) => {
+            console.error(err);
+            alert('Something went wrong. Please try again later.');
+          }
+        });
+    }
   }
-  else{
-     if(this.loginObj.username=="admin" && this.loginObj.password=="admin786"){
-
-      this.router.navigate(['/dashboard']);
-      alert("Login Successful")
-      }
-       else{
-      alert("Wrong credentials");
-        }
-     }
- 
-
-}
 }

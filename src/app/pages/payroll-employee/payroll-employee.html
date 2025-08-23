@@ -1,0 +1,35 @@
+<div class="container">
+  <h2>Payroll Employee List</h2>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <table class="table table-bordered table-striped" *ngIf="employees.length > 0">
+    <thead>
+      <tr>
+        <th>S.No</th>
+        <th>Emp. Code</th>
+        <th>Name</th>
+        <th>Mobile</th>
+        <th>Department</th>
+        <th>Designation</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        @for(emp of employees; track $index){
+        <tr >
+        <td>{{ $index+1 }}</td>
+        <td>{{ emp.EmpCode }}</td>
+        <td>{{ emp.EmpName }}</td>
+        <td>{{ emp.EmpMobNo }}</td>
+        <td>{{ emp.DepartmentName }}</td>
+        <td>{{ emp.DesignationName }}</td>
+        </tr>
+        }
+      
+      
+    </tbody>
+  </table>
+</div>
