@@ -9,11 +9,12 @@
     <thead>
       <tr>
         <th>S.No</th>
-        <th>Emp. Code</th>
+        <th>Code</th>
         <th>Name</th>
         <th>Mobile</th>
         <th>Department</th>
         <th>Designation</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -26,6 +27,12 @@
         <td>{{ emp.EmpMobNo }}</td>
         <td>{{ emp.DepartmentName }}</td>
         <td>{{ emp.DesignationName }}</td>
+        <td>
+  <button class="btn btn-success" (click)="viewEmployee()">
+    <i class="fa fa-eye"></i>
+  </button>
+</td>
+
         </tr>
         }
       

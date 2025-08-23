@@ -7,6 +7,7 @@ import { Project } from './pages/project/project';
 import { ProjectEmployee } from './pages/project-employee/project-employee';
 import { ProjectForm } from './pages/project-form/project-form';
 import { PayrollEmployee } from './pages/payroll-employee/payroll-employee';
+import { ViewPayrollEmployees } from './pages/view-payroll-employees/view-payroll-employees';
 
 export const routes: Routes = [
 
@@ -35,6 +36,10 @@ export const routes: Routes = [
         {
             path:'payroll-employee',
             component:PayrollEmployee
+        },
+        {
+            path:'view-payroll-employee',
+            component:ViewPayrollEmployees
         },
          {
             path:'new-project/:id',

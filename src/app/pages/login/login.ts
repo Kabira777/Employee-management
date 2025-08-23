@@ -29,7 +29,13 @@ constructor(private router:Router, private master:Master){}
           next: (res) => {
             if (res && res.StatusCode === 200 && res.Data) {
               alert('Login Successful');
+              //store username in localStorage
+              localStorage.setItem('username',this.loginObj.username);
+
+               //store accessCode in localStorage
+              localStorage.setItem('accessCode','S82D9E4B9G2SD68SDF');
               // optionally store user info in localStorage
+
               localStorage.setItem('user', JSON.stringify(res.Data));
               this.router.navigate(['/dashboard']);
             } else {

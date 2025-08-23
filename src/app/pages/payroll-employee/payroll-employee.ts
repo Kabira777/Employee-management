@@ -16,17 +16,18 @@ export class PayrollEmployee {
   employees: PayrollEmployeeList[] = [];   // will store employee list
   errorMessage: string = '';
 
-  constructor(private masterService: Master) {}
+  constructor(private masterService: Master, private router:Router) {}
 
   ngOnInit(): void {
     this.loadEmployees();
   }
 
  loadEmployees(): void {
-  const accessCode = "S82D9E4B9G2SD68SDF";
-  const loginId='SuperAdmin';
+  const accessCode = localStorage.getItem('accessCode');
+  const loginId=localStorage.getItem('username');
 
-  this.masterService.getPayrollEmployeeList(accessCode, loginId)
+  if(loginId=='SuperAdmin' && accessCode=='S82D9E4B9G2SD68SDF'){
+    this.masterService.getPayrollEmployeeList(accessCode, loginId)
     .subscribe({
       next: (res) => {
         console.log("Full API Response: ", res);
@@ -45,6 +46,15 @@ export class PayrollEmployee {
         console.error(err);
       }
     });
+  }
+  else{
+    console.log(`Sorry, you don't have the access to view Employees`);
+  }
+  
 }
 
+
+viewEmployee():void{
+this.router.navigate(['/view-payroll-employee'])
+}
 }
