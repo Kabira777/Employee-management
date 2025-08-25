@@ -54,7 +54,8 @@ export class PayrollEmployee {
 }
 
 
-viewEmployee():void{
-this.router.navigate(['/view-payroll-employee'])
+viewEmployee(emp: PayrollEmployeeList): void {
+  this.router.navigate(['/view-payroll-employee', emp.EmployeeID]);
 }
+
 }

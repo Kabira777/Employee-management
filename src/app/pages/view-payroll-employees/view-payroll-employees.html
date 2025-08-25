@@ -1,1 +1,47 @@
-<p>view-payroll-employees works!</p>
+<div class="container mt-4" *ngIf="employee; else noData">
+    <div class="row">
+         <h2>{{ employee.EmpName }}</h2>
+    </div>
+  <div class="row">
+ 
+    <div class="col-md-4 mb-3">
+     
+      <p><strong>Employee Code:</strong> {{ employee.EmpCode }}</p>
+      <p><strong>Father’s Name:</strong> {{ employee.FName }}</p>
+      <p><strong>DOB:</strong> {{ employee.DOB }}</p>
+      <p><strong>Mobile:</strong> {{ employee.EmpMobNo }}</p>
+      <p><strong>Email:</strong> {{ employee.EmpEmailID }}</p>
+      <p><strong>Department:</strong> {{ employee.DepartmentName }}</p>
+    </div>
+
+   
+    <div class="col-md-4 mb-3">
+      <p><strong>Designation:</strong> {{ employee.DesignationName }}</p>
+      <p><strong>DOJ:</strong> {{ employee.DOJ }}</p>
+      <p><strong>Bank:</strong> {{ employee.BankName }} ({{ employee.AccountNo }})</p>
+      <p><strong>CTC:</strong> ₹{{ employee.MonthlyCTC }}/month</p>
+      <p><strong>Address:</strong> {{ employee.EmpAddress }}</p>
+      <p><strong>City:</strong> {{ employee.CityName }}, {{ employee.StateName }}</p>
+    </div>
+
+   
+    <div class="col-md-4 mb-3 text-center">
+      <div *ngIf="employee.EmployeePhotoPath">
+        <img 
+  [src]="'https://payroll.influxinfotech.in.net/SSAPI/' + employee?.EmployeePhotoPath"
+  alt="Employee Photo"
+  class="img-thumbnail shadow-sm"
+  style="max-width: 200px; border-radius: 10px;"
+  (error)="handleImageError($event)"
+>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #noData>
+  <div class="alert alert-warning text-center">
+    {{ errorMessage || 'No employee data available.' }}
+  </div>
+</ng-template>

@@ -107,9 +107,17 @@ export class Master {
 }
 
 
-getPayrollEmployeeList(accessCode: string, loginId: string): Observable<{ StatusCode: number, Message: string, Data: PayrollEmployeeList[] }> {
-  const url = `${this.apiUrlPayroll}/GetEmployeeList?AccessCode=${accessCode}&LoginID=${loginId}`;
-  return this.http.get<{ StatusCode: number, Message: string, Data: PayrollEmployeeList[] }>(url);
+
+getPayrollEmployeeList(accessCode: string, loginId: string) {
+  const url = `https://payroll.influxinfotech.in.net/SSAPI/GetEmployeeList?AccessCode=${accessCode}&LoginID=${loginId}`;
+  return this.http.get<{ StatusCode: number, Message: string, Data: any[] }>(url);
 }
 
 }
+
+
+
+
+
+
+

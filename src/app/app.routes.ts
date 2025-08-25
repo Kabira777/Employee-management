@@ -38,9 +38,10 @@ export const routes: Routes = [
             component:PayrollEmployee
         },
         {
-            path:'view-payroll-employee',
-            component:ViewPayrollEmployees
+            path: 'view-payroll-employee/:id',
+            component: ViewPayrollEmployees
         },
+
          {
             path:'new-project/:id',
             component:ProjectForm
